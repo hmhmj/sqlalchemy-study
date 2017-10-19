@@ -37,7 +37,7 @@ strategies.py(策略)
 
 threadlocal.py
     The ``TLEngine`` class is defined here, which is a subclass of
-    the generic ``Engine`` and tracks ``Connection`` and
+    the generic(一般的、一类的) ``Engine`` and tracks(路径) ``Connection`` and
     ``Transaction`` objects against the identity of the current
     thread.  This allows certain programming patterns based around
     the concept of a "thread-local connection" to be possible.
@@ -45,7 +45,7 @@ threadlocal.py
     strategy in conjunction with the ``create_engine()`` function.
 
 url.py
-    Defines the ``URL`` class which represents the individual
+    Defines the ``URL`` class which represents the individual(个人的、个别的、独特的)
     components of a string URL passed to ``create_engine()``.  Also
     defines a basic module-loading strategy for the dialect specifier
     within a URL.
@@ -121,7 +121,7 @@ def create_engine(*args, **kwargs):
     the URL can be an instance of :class:`~sqlalchemy.engine.url.URL`.
 
     ``**kwargs`` takes a wide variety of options which are routed
-    towards their appropriate components.  Arguments may be specific to
+    towards their appropriate components.  Arguments may be specific（具体的、明确的） to
     the :class:`.Engine`, the underlying :class:`.Dialect`, as well as the
     :class:`.Pool`.  Specific dialects also accept keyword arguments that
     are unique to that dialect.   Here, we describe the parameters
@@ -130,7 +130,7 @@ def create_engine(*args, **kwargs):
     Once established, the newly resulting :class:`.Engine` will
     request a connection from the underlying :class:`.Pool` once
     :meth:`.Engine.connect` is called, or a method which depends on it
-    such as :meth:`.Engine.execute` is invoked.   The :class:`.Pool` in turn
+    such as :meth:`.Engine.execute` is invoked（援引）.   The :class:`.Pool` in turn
     will establish the first actual DBAPI connection when this request
     is received.   The :func:`.create_engine` call itself does **not**
     establish any actual DBAPI connections directly.
@@ -149,8 +149,10 @@ def create_engine(*args, **kwargs):
 
        .. versionchanged:: 0.8
            By default, result row names match case-sensitively.
-           In version 0.7 and prior, all matches were case-insensitive.
+           In version 0.7 and prior（在…之前）, all matches were case-insensitive.
+        如果case_sensitive=False的话，返回值是大小写不敏感的
 
+    TODO
     :param connect_args: a dictionary of options which will be
         passed directly to the DBAPI's ``connect()`` method as
         additional keyword arguments.  See the example
@@ -185,12 +187,14 @@ def create_engine(*args, **kwargs):
         printed to the standard output as well. This flag ultimately
         controls a Python logger; see :ref:`dbengine_logging` for
         information on how to configure logging directly.
+    如果把echo设置为True和debug，都会打印出log
 
     :param echo_pool=False: if True, the connection pool will log
         all checkouts/checkins to the logging stream, which defaults to
         sys.stdout. This flag ultimately controls a Python logger; see
         :ref:`dbengine_logging` for information on how to configure logging
         directly.
+    如果把echo_pool设置为True和debug，都会打印出log
 
     :param empty_in_strategy:  The SQL compilation strategy to use when
         rendering an IN or NOT IN expression for :meth:`.ColumnOperators.in_`
