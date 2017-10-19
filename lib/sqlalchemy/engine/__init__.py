@@ -23,11 +23,11 @@ base.py
 
 default.py
     Contains default implementations of some of the components defined
-    in base.py.  All current database dialects use the classes in
+    in base.py.  All current database dialects(方言) use the classes in
     default.py as base classes for their own database-specific
     implementations.
 
-strategies.py
+strategies.py(策略)
     The mechanics of constructing ``Engine`` objects are represented
     here.  Defines the ``EngineStrategy`` class which represents how
     to go from arguments specified to the ``create_engine()``
